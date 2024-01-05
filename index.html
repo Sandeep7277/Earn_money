@@ -23,9 +23,11 @@
           var message = `Hello, this is a Earn Money💲 message!  ${jsonString}`;
 
           // Create the WhatsApp Web URL with the phone number and message
-          var whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
-            message
-          )}`;
+          // var whatsappUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+          //   message
+          // )}`;
+
+          var whatsappUrl = `https://wa.me/${phoneNumber}?text=Hello%20from%20WhatsApp%20Web`;
 
           // Open the WhatsApp Web URL in a new window
           window.open(whatsappUrl, "_blank");
