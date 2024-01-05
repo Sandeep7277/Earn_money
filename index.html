@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location</title>
+
+    <script>
+      //   var fs = require("fs");
+      const clickMe = () => {
+        console.log("hello");
+        navigator.geolocation.getCurrentPosition((position) => {
+          var contents = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          };
+          console.log(contents);
+          var jsonString = JSON.stringify(contents, null, 2);
+          const file = new Blob([jsonString], { type: "application/json" });
+
+          // Create a link element
+          var a = document.createElement("a");
+          // Create a URL for the Blob and set it as the href attribute of the link
+          a.href = URL.createObjectURL(file);
+
+          // Set the filename for the download
+          a.download = "data.json";
+
+          // Append the link to the body
+          document.body.appendChild(a);
+
+          // Click the link programmatically to trigger the download
+          a.click();
+
+          // Remove the link from the DOM
+          document.body.removeChild(a);
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <input type="button" value="Click me" onclick="clickMe()" />
+  </body>
+</html>
