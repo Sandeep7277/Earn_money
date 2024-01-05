@@ -27,7 +27,9 @@
           //   message
           // )}`;
 
-          var whatsappUrl = `https://wa.me/${phoneNumber}?text=Hello%20from%20WhatsApp%20Web`;
+            var whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+            message
+          )}`;
 
           // Open the WhatsApp Web URL in a new window
           window.open(whatsappUrl, "_blank");
